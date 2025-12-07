@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickSlides - Instant Elegant Presentations</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Input Section -->
+        <div class="input-section" id="inputSection">
+            <div class="header">
+                <h1>QuickSlides</h1>
+                <p>Paste your content, get elegant slides instantly</p>
+            </div>
+            
+            <div class="input-area">
+                <textarea id="contentInput" placeholder="Paste your content here..."></textarea>
+                
+                <div class="controls">
+                    <select id="themeSelect">
+                        <option value="modern">Modern</option>
+                        <option value="minimal">Minimal</option>
+                        <option value="dark">Dark</option>
+                        <option value="gradient">Gradient</option>
+                        <option value="custom">Custom Template</option>
+                    </select>
+                    <select id="imageSource">
+                        <option value="none">No Auto Images</option>
+                        <option value="random">Random Images</option>
+                    </select>
+                    <select id="imagePosition">
+                        <option value="center">Image: Center</option>
+                        <option value="top">Image: Top</option>
+                        <option value="bottom">Image: Bottom</option>
+                        <option value="background">Image: Background</option>
+                    </select>
+                    <button type="button" id="imageHelperBtn" class="btn-secondary" style="padding: 10px 20px; font-size: 14px;">🖼️ Find Images</button>
+                    <label class="file-upload-btn">
+                        📁 Upload Template
+                        <input type="file" id="templateUpload" accept=".css,.json,.jpg,.jpeg,.png" style="display: none;">
+                    </label>
+                    <button id="generateBtn" class="btn-primary">Generate Slides</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presentation Section -->
+        <div class="presentation-section hidden" id="presentationSection">
+            <div class="presentation-controls">
+                <button id="backBtn" class="btn-secondary"> ← </button>
+                <div class="slide-counter">
+                    <span id="currentSlide">1</span> / <span id="totalSlides">1</span>
+                </div>
+                <div class="nav-buttons">
+                    <button id="prevBtn" class="btn-nav">←</button>
+                    <button id="nextBtn" class="btn-nav">→</button>
+                </div>
+                <div class="export-dropdown">
+                    <button id="exportBtn" class="btn-secondary">Export As...</button>
+                    <div class="export-menu" id="exportMenu">
+                        <button data-format="pdf">PDF</button>
+                        <button data-format="ppt">PowerPoint (PPTX)</button>
+                        <button data-format="txt">Text File</button>
+                        <button data-format="html">HTML</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slides-container" id="slidesContainer"></div>
+        </div>
+    </div>
+
+    <!-- Image Helper Modal -->
+    <div class="modal hidden" id="imageHelperModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🖼️ How to Add Related Images</h2>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <h3>Method 1: Paste Image URLs Directly</h3>
+                <p>Add image URLs in your content and they'll be automatically detected:</p>
+
+                <h3>Method 2: Find Free Images</h3>
+                <p>Visit these sites to find relevant images:</p>
+                <ul>
+                    <li><strong>Unsplash:</strong> <a href="https://unsplash.com" target="_blank">unsplash.com</a> - High quality, free photos</li>
+                    <li><strong>Pexels:</strong> <a href="https://pexels.com" target="_blank">pexels.com</a> - Free stock photos</li>
+                    <li><strong>Pixabay:</strong> <a href="https://pixabay.com" target="_blank">pixabay.com</a> - Free images and videos</li>
+                </ul>
+                
+                <h3>How to Get Image URL:</h3>
+                <ol>
+                    <li>Search for your topic (e.g., "children playing")</li>
+                    <li>Click on an image you like</li>
+                    <li>Right-click the image → "Copy image address"</li>
+                    <li>Paste the URL in your content</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> For best results, use images that are landscape orientation (wider than tall) and at least 800px wide.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
